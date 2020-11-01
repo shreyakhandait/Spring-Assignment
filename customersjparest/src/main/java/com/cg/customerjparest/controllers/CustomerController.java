@@ -1,6 +1,5 @@
 package com.cg.customerjparest.controllers;
 
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -23,6 +22,11 @@ import com.cg.customerjparest.dto.CustomerDetails;
 import com.cg.customerjparest.dto.UpdateCustomerRequest;
 import com.cg.customerjparest.entities.Customer;
 import com.cg.customerjparest.service.ICustomerService;
+
+/*
+ * http://localhost:8989/customers
+ */
+
 
 @RequestMapping("/customers")
 @RestController
