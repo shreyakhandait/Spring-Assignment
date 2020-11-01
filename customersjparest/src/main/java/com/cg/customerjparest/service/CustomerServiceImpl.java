@@ -33,7 +33,8 @@ public class CustomerServiceImpl implements ICustomerService {
 	@Override
 	public Customer updateName(long id, String name) {
 		Customer customer=dao.findById(id);
-		ValidationUtil.checkName(customer.getName());
+		ValidationUtil.checkName(name);
+		customer.setId(id);
 		customer.setName(name);
         customer=dao.update(customer);
         return customer;

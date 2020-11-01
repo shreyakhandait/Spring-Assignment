@@ -13,4 +13,10 @@ public class CentralizedExceptionHandler {
     public String handleStudentNotFound(CustomerNotFoundException e){
          return e.getMessage();
     }
+    
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(InvalidCustomerNameException.class)
+    public String handleInvalidAge(InvalidCustomerNameException e){
+        return e.getMessage();
+    }
 }
