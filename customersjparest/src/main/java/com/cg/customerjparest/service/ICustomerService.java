@@ -8,8 +8,9 @@ public interface ICustomerService {
 
 	Customer register(Customer customer);
 	
-	Customer updateName(long id,String name);
+	Customer updateName(long id, String name);
 	
 	List<Customer>findAll();
+
 	
 }

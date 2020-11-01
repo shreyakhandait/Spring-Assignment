@@ -30,6 +30,8 @@ public class CustomerController {
 
     @Autowired
     private ICustomerService service;
+	private long id;
+	private String name;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/add")
@@ -42,9 +44,9 @@ public class CustomerController {
 
     @PutMapping("/update")
     public CustomerDetails update(@RequestBody UpdateCustomerRequest requestData) {
-        Customer customer = new Customer(requestData.getName());
+    	 Customer customer=new Customer(requestData.getName());
         customer.setId(requestData.getId());
-        customer = service.updateName(01, "Shreya");
+        customer = service.updateName(id, name);
         CustomerDetails details = toDetails(customer);
         return details;
     }

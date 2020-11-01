@@ -53,7 +53,7 @@ public class CustomerDaoImpl implements ICustomerDao {
     
     @Override
     public List<Customer> findAll() {
-        String ql="from Student";
+        String ql="from Customer";
         TypedQuery<Customer>query=entityManager.createQuery(ql,Customer.class);
         List<Customer>list=query.getResultList();
         return list;
