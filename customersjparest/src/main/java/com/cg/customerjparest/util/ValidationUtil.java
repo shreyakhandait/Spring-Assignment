@@ -1,6 +1,7 @@
 package com.cg.customerjparest.util;
 
 import com.cg.customerjparest.exception.InvalidArgumentException;
+import com.cg.customerjparest.exception.InvalidCustomerIdException;
 import com.cg.customerjparest.exception.InvalidCustomerNameException;
 
 
@@ -17,6 +18,13 @@ public class ValidationUtil {
 			throw new InvalidCustomerNameException("name is not valid");
 		}
 
+	}
+
+	public static void checkId(Long id) {
+		if (id == null) {
+			throw new InvalidCustomerIdException("id is not valid");
+		}
+		
 	}
 
 

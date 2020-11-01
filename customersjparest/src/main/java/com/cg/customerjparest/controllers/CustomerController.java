@@ -27,56 +27,54 @@ import com.cg.customerjparest.service.ICustomerService;
  * http://localhost:8989/customers
  */
 
-
 @RequestMapping("/customers")
 @RestController
 public class CustomerController {
 
-    @Autowired
-    private ICustomerService service;
+	@Autowired
+	private ICustomerService service;
 	private long id;
 	private String name;
 
-    @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/add")
-    public CustomerDetails add(@RequestBody CreateCustomerRequest requestData) {
-        Customer customer = new Customer(requestData.getName());
-        customer = service.register(customer);
-        CustomerDetails details = toDetails(customer);
-        return details;
-    }
+	@ResponseStatus(HttpStatus.CREATED)
+	@PostMapping("/add")
+	public CustomerDetails add(@RequestBody CreateCustomerRequest requestData) {
+		Customer customer = new Customer(requestData.getName());
+		customer = service.register(customer);
+		CustomerDetails details = toDetails(customer);
+		return details;
+	}
 
-    @PutMapping("/update")
-    public CustomerDetails update(@RequestBody UpdateCustomerRequest requestData) {
-    	 Customer customer=new Customer(requestData.getName());
-        customer.setId(requestData.getId());
-        customer = service.updateName(id, name);
-        CustomerDetails details = toDetails(customer);
-        return details;
-    }
+	@PutMapping("/update")
+	public CustomerDetails update(@RequestBody UpdateCustomerRequest requestData) {
+		Customer customer = new Customer(requestData.getName());
+		customer = service.updateName(id, name);
+		CustomerDetails details = toDetails(customer);
+		return details;
+	}
 
-    @GetMapping
-    public List<CustomerDetails> fetchAll() {
-        List<Customer> students = service.findAll();
-        // List<StudentDetails>response= students.stream().map(student->toDetails(student)).collect(Collectors.toList());
-        List<CustomerDetails> response = toDetails(students);
-        return response;
-    }
+	@GetMapping
+	public List<CustomerDetails> fetchAll() {
+		List<Customer> students = service.findAll();
+		// List<StudentDetails>response=
+		// students.stream().map(student->toDetails(student)).collect(Collectors.toList());
+		List<CustomerDetails> response = toDetails(students);
+		return response;
+	}
 
-    public List<CustomerDetails> toDetails(Collection<Customer> customers) {
-        List<CustomerDetails> desired = new ArrayList<>();
-        for (Customer customer : customers) {
-            CustomerDetails details = toDetails(customer);
-            desired.add(details);
-        }
-        return desired;
-    }
+	public List<CustomerDetails> toDetails(Collection<Customer> customers) {
+		List<CustomerDetails> desired = new ArrayList<>();
+		for (Customer customer : customers) {
+			CustomerDetails details = toDetails(customer);
+			desired.add(details);
+		}
+		return desired;
+	}
 
-    public CustomerDetails toDetails(Customer customer) {
-        CustomerDetails details = new CustomerDetails(customer.getId(), customer.getName());
-        return details;
+	public CustomerDetails toDetails(Customer customer) {
+		CustomerDetails details = new CustomerDetails(customer.getId(), customer.getName());
+		return details;
 
-    }
-
+	}
 
 }
